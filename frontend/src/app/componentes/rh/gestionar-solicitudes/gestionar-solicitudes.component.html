@@ -1,0 +1,36 @@
+<div class="main-container">
+    <!-- Navbar -->
+    <nav>
+      <a routerLink="/menu-rh">Clínica</a>
+      <div class="nav-item">Portal de Gestión Humana</div>
+    </nav>
+  
+    <!-- Contenido -->
+    <div class="content-container">
+      <div class="form-box">
+        <h2>Solicitudes Pendientes</h2>
+        <div *ngIf="solicitudes.length === 0">No hay solicitudes pendientes.</div>
+  
+        <div *ngFor="let solicitud of solicitudes" class="solicitud-card">
+            <p><strong>Nombre:</strong> {{ solicitud.medico?.nombreMedico || 'Sin nombre' }}</p>
+            <p><strong>ID del Médico:</strong> {{ solicitud.medico?.idMedico || 'Sin ID' }}</p>
+            <p><strong>Tipo:</strong> {{ solicitud.tipo }}</p>
+            <p><strong>Fecha Inicio:</strong> {{ solicitud.fechaInicio | date }}</p>
+            <p><strong>Fecha Fin:</strong> {{ solicitud.fechaFin | date }}</p>
+            <p><strong>Motivo:</strong> {{ solicitud.motivo }}</p>
+            <p><strong>Observaciones:</strong> {{ solicitud.observaciones || 'N/A' }}</p>
+  
+          <div class="botones">
+            <button (click)="actualizarEstado(solicitud.idPermiso, 'Aprobado')">Aprobar</button>
+            <button (click)="actualizarEstado(solicitud.idPermiso, 'Rechazado')">Rechazar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Footer -->
+    <footer class="footer">
+      ClínicaApp - Sistema de Gestión de Recursos Humanos
+    </footer>
+  </div>
+  

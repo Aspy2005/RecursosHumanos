@@ -1,6 +1,8 @@
-	package com.example.demo.modelo;
+package com.example.demo.modelo;
 
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.*;
 
@@ -15,6 +17,7 @@ public class VacacionesPermisos {
 
     @ManyToOne
     @JoinColumn(name = "id_medico", referencedColumnName = "id_medico")
+    @JsonIgnoreProperties({"solicitudes"}) // <- evita recursividad infinita
     private Medico medico;
 
     @Column(name = "tipo")
@@ -38,95 +41,47 @@ public class VacacionesPermisos {
     @Column(name = "estado")
     private String estado;
 
-	public VacacionesPermisos() {
-		super();
-	}
+    public VacacionesPermisos() {}
 
-	public VacacionesPermisos(int idPermiso, Medico medico, String tipo, int diasSolicitados, Date fechaInicio,
-			Date fechaFin, String motivo, String observaciones, String estado) {
-		super();
-		this.idPermiso = idPermiso;
-		this.medico = medico;
-		this.tipo = tipo;
-		this.diasSolicitados = diasSolicitados;
-		this.fechaInicio = fechaInicio;
-		this.fechaFin = fechaFin;
-		this.motivo = motivo;
-		this.observaciones = observaciones;
-		this.estado = estado;
-	}
+    public VacacionesPermisos(int idPermiso, Medico medico, String tipo, int diasSolicitados, Date fechaInicio,
+                               Date fechaFin, String motivo, String observaciones, String estado) {
+        this.idPermiso = idPermiso;
+        this.medico = medico;
+        this.tipo = tipo;
+        this.diasSolicitados = diasSolicitados;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.motivo = motivo;
+        this.observaciones = observaciones;
+        this.estado = estado;
+    }
 
-	public int getIdPermiso() {
-		return idPermiso;
-	}
+    // Getters y setters
 
-	public void setIdPermiso(int idPermiso) {
-		this.idPermiso = idPermiso;
-	}
+    public int getIdPermiso() { return idPermiso; }
+    public void setIdPermiso(int idPermiso) { this.idPermiso = idPermiso; }
 
-	public Medico getMedico() {
-		return medico;
-	}
+    public Medico getMedico() { return medico; }
+    public void setMedico(Medico medico) { this.medico = medico; }
 
-	public void setMedico(Medico medico) {
-		this.medico = medico;
-	}
+    public String getTipo() { return tipo; }
+    public void setTipo(String tipo) { this.tipo = tipo; }
 
-	public String getTipo() {
-		return tipo;
-	}
+    public int getDiasSolicitados() { return diasSolicitados; }
+    public void setDiasSolicitados(int diasSolicitados) { this.diasSolicitados = diasSolicitados; }
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
+    public Date getFechaInicio() { return fechaInicio; }
+    public void setFechaInicio(Date fechaInicio) { this.fechaInicio = fechaInicio; }
 
-	public int getDiasSolicitados() {
-		return diasSolicitados;
-	}
+    public Date getFechaFin() { return fechaFin; }
+    public void setFechaFin(Date fechaFin) { this.fechaFin = fechaFin; }
 
-	public void setDiasSolicitados(int diasSolicitados) {
-		this.diasSolicitados = diasSolicitados;
-	}
+    public String getMotivo() { return motivo; }
+    public void setMotivo(String motivo) { this.motivo = motivo; }
 
-	public Date getFechaInicio() {
-		return fechaInicio;
-	}
+    public String getObservaciones() { return observaciones; }
+    public void setObservaciones(String observaciones) { this.observaciones = observaciones; }
 
-	public void setFechaInicio(Date fechaInicio) {
-		this.fechaInicio = fechaInicio;
-	}
-
-	public Date getFechaFin() {
-		return fechaFin;
-	}
-
-	public void setFechaFin(Date fechaFin) {
-		this.fechaFin = fechaFin;
-	}
-
-	public String getMotivo() {
-		return motivo;
-	}
-
-	public void setMotivo(String motivo) {
-		this.motivo = motivo;
-	}
-
-	public String getObservaciones() {
-		return observaciones;
-	}
-
-	public void setObservaciones(String observaciones) {
-		this.observaciones = observaciones;
-	}
-
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-
-    
+    public String getEstado() { return estado; }
+    public void setEstado(String estado) { this.estado = estado; }
 }

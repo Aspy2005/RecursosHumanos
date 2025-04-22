@@ -3,6 +3,7 @@ package com.example.demo.controlador;
 import com.example.demo.modelo.VacacionesPermisos;
 import com.example.demo.servicios.VacacionesPermisosService;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,18 @@ public class VacacionesPermisosControlador {
         }
     }
 
+    @GetMapping("/pendientes")
+    public ResponseEntity<List<VacacionesPermisos>> obtenerSolicitudesPendientes() {
+        return ResponseEntity.ok(service.obtenerSolicitudesPendientes());
+    }
 
+    @PutMapping("/{id}/estado")
+    public ResponseEntity<?> actualizarEstado(@PathVariable int id, @RequestParam String estado) {
+        try {
+            service.actualizarEstadoSolicitud(id, estado);
+            return ResponseEntity.ok(Map.of("mensaje", "Estado actualizado correctamente"));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        }
+    }
 }

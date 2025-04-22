@@ -60,13 +60,15 @@ export class SolicitudPermisoComponent implements OnInit {
     const diasSolicitados = Math.floor((fin.getTime() - inicio.getTime()) / (1000 * 60 * 60 * 24)) + 1;
 
     const solicitud = {
-      idMedico: this.idMedico,
       tipo: this.permisoForm.value.tipo,
       fechaInicio: inicio,
       fechaFin: fin,
       motivo: this.permisoForm.value.motivo,
       observaciones: this.permisoForm.value.observaciones,
-      diasSolicitados: diasSolicitados
+      diasSolicitados: diasSolicitados,
+      medico: {
+        idMedico: this.idMedico
+      }
     };
 
     this.http.post<any>('http://localhost:8080/api/solicitudes/solicitar', solicitud)
