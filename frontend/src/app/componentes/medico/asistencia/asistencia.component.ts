@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AsistenciaService } from './../../../servicios/asistencia.service';
 import { LoginService } from './../../../servicios/login.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-asistencia',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, HttpClientModule, ReactiveFormsModule, RouterModule],
   templateUrl: './asistencia.component.html',
   styleUrls: ['./asistencia.component.css']
 })
@@ -75,27 +76,28 @@ export class AsistenciaComponent implements OnInit {
       window.alert('ID de médico no encontrado');
       return;
     }
-
+  
     if (!this.entradaRegistrada) {
       window.alert('Error: NO se puede registrar la salida sin haber registrado la entrada');
       return;
     }
-
+  
     if (this.salidaRegistrada) {
       window.alert('¡La hora de salida ya fue registrada!');
       return;
     }
-
+  
     this.AsistenciaService.registrarSalida(this.idMedico).subscribe(
       (response) => {
         this.salidaRegistrada = true;
-        window.alert(response.mensaje || 'Hora de salida registrada correctamente');
+        window.alert(response.mensaje); // ← muestra horas trabajadas
       },
       (error) => {
         window.alert(error.error?.error || 'Error al registrar la hora de salida');
       }
     );
   }
+  
 
   borrarRegistro() {
     if (!this.idMedico) {

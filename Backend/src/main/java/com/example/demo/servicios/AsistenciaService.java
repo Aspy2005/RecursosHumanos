@@ -6,7 +6,6 @@ import com.example.demo.repositorio.AsistenciaRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Service
@@ -27,26 +26,39 @@ public class AsistenciaService {
         Asistencia nueva = new Asistencia();
         nueva.setMedico(medico);
         nueva.setFecha(new Date());
-        nueva.setHoraEntrada(obtenerHoraActual());
+        nueva.setHoraEntrada(new Date());
         nueva.setHorasTrabajadas(0);
 
         return asistenciaRepository.save(nueva);
     }
 
-    public Asistencia registrarSalida(Medico medico) {
+    public String registrarSalida(int idMedico) {
+        Medico medico = new Medico();
+        medico.setIdMedico(idMedico);
+
         Date inicio = obtenerInicioDelDia();
         Date fin = obtenerFinDelDia();
 
         Asistencia asistencia = asistenciaRepository.findByMedicoAndFechaBetween(medico, inicio, fin)
-            .orElseThrow(() -> new IllegalStateException("No se puede registrar la salida sin haber registrado la entrada."));
+            .orElseThrow(() -> new IllegalStateException("No se encontró un registro de entrada."));
 
         if (asistencia.getHoraSalida() != null) {
-            throw new IllegalStateException("La hora de salida ya fue registrada para este día.");
+            throw new IllegalStateException("Ya se ha registrado la salida.");
         }
 
-        asistencia.setHoraSalida(obtenerHoraActual());
-        asistencia.setHorasTrabajadas(calcularHoras(asistencia));
-        return asistenciaRepository.save(asistencia);
+        Date horaSalida = new Date();
+        asistencia.setHoraSalida(horaSalida);
+
+        long diferenciaMs = horaSalida.getTime() - asistencia.getHoraEntrada().getTime();
+        float horasTrabajadas = diferenciaMs / (1000f * 60 * 60);
+        asistencia.setHorasTrabajadas(horasTrabajadas);
+
+        asistenciaRepository.save(asistencia);
+
+        long horas = (long) horasTrabajadas;
+        long minutos = (long) ((horasTrabajadas - horas) * 60);
+
+        return String.format("Hora de salida registrada correctamente. Tiempo trabajado: %d horas y %d minutos.", horas, minutos);
     }
 
     public void borrarRegistro(Medico medico) {
@@ -64,22 +76,6 @@ public class AsistenciaService {
         Date inicio = obtenerInicioDelDia();
         Date fin = obtenerFinDelDia();
         return asistenciaRepository.findByMedicoAndFechaBetween(medico, inicio, fin);
-    }
-
-    private float calcularHoras(Asistencia asistencia) {
-        try {
-            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-            Date entrada = sdf.parse(asistencia.getHoraEntrada());
-            Date salida = sdf.parse(obtenerHoraActual());
-            long ms = salida.getTime() - entrada.getTime();
-            return ms / (1000f * 60 * 60);
-        } catch (Exception e) {
-            return 0;
-        }
-    }
-
-    private String obtenerHoraActual() {
-        return new SimpleDateFormat("HH:mm").format(new Date());
     }
 
     private Date obtenerInicioDelDia() {

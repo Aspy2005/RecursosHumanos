@@ -35,10 +35,9 @@ public class AsistenciaControlador {
     @PostMapping("/salida")
     public ResponseEntity<?> registrarSalida(@RequestBody Map<String, Long> request) {
         try {
-            Medico medico = new Medico();
-            medico.setIdMedico(request.get("idMedico").intValue());
-            asistenciaService.registrarSalida(medico);
-            return ResponseEntity.ok(Map.of("mensaje", "Hora de salida registrada correctamente"));
+            int idMedico = request.get("idMedico").intValue();
+            String mensaje = asistenciaService.registrarSalida(idMedico);
+            return ResponseEntity.ok(Map.of("mensaje", mensaje));
         } catch (IllegalStateException e) {
             return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
         } catch (Exception e) {
@@ -62,7 +61,6 @@ public class AsistenciaControlador {
         }
     }
 
-
     @GetMapping("/verificar/{idMedico}")
     public ResponseEntity<Map<String, Boolean>> verificar(@PathVariable Long idMedico) {
         Medico medico = new Medico();
@@ -75,4 +73,4 @@ public class AsistenciaControlador {
 
         return ResponseEntity.ok(Map.of("entradaRegistrada", entrada, "salidaRegistrada", salida));
     }
-}
+}  
