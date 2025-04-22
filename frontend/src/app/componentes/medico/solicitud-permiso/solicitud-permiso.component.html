@@ -1,0 +1,67 @@
+<div class="main-container">
+    <!-- Navbar -->
+    <nav>
+      <a routerLink="/menu-medico">Clinica</a>
+      <div class="nav-item">Portal del Empleado</div>
+    </nav>
+  
+    <!-- Contenido -->
+    <div class="content-container">
+      <div class="form-box">
+        <h2>Solicitar Vacaciones o Permiso</h2>
+  
+        <form [formGroup]="permisoForm" (ngSubmit)="enviarSolicitud()">
+          <div>
+            <label>Tipo:</label>
+            <select formControlName="tipo">
+              <option value="Vacaciones">Vacaciones</option>
+              <option value="Permiso">Permiso</option>
+            </select>
+            <div *ngIf="permisoForm.get('tipo')?.hasError('required') && permisoForm.get('tipo')?.touched" class="error">
+              El tipo es obligatorio.
+            </div>
+          </div>
+  
+          <div>
+            <label>Fecha de Inicio:</label>
+            <input type="date" formControlName="fechaInicio">
+            <div *ngIf="permisoForm.get('fechaInicio')?.hasError('required') && permisoForm.get('fechaInicio')?.touched" class="error">
+              La fecha de inicio es obligatoria.
+            </div>
+          </div>
+  
+          <div>
+            <label>Fecha de Fin:</label>
+            <input type="date" formControlName="fechaFin">
+            <div *ngIf="permisoForm.get('fechaFin')?.hasError('required') && permisoForm.get('fechaFin')?.touched" class="error">
+              La fecha de fin es obligatoria.
+            </div>
+            <div *ngIf="permisoForm.get('fechaFin')?.hasError('fechaInvalida') && permisoForm.get('fechaFin')?.touched" class="error">
+              La fecha de fin no puede ser anterior a la de inicio.
+            </div>
+          </div>
+  
+          <div>
+            <label>Motivo:</label>
+            <input type="text" formControlName="motivo">
+            <div *ngIf="permisoForm.get('motivo')?.hasError('required') && permisoForm.get('motivo')?.touched" class="error">
+              El motivo es obligatorio.
+            </div>
+          </div>
+  
+          <div>
+            <label>Observaciones:</label>
+            <textarea formControlName="observaciones"></textarea>
+          </div>
+  
+          <button type="submit" class="btn-submit">Enviar Solicitud</button>
+        </form>
+      </div>
+    </div>
+  
+    <!-- Footer -->
+    <footer class="footer">
+      ClínicaApp - Sistema de Gestión de Recursos Humanos
+    </footer>
+  </div>
+  

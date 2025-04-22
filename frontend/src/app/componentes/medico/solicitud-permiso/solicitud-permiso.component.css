@@ -1,0 +1,147 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  nav {
+    background-color: #141E54;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    gap: 2rem;
+    font-weight: bold;
+  }
+  
+  .nav-item {
+    cursor: default;
+  }
+  
+  .content-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+  }
+  
+  .form-box {
+    background: white;
+    padding: 30px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    border-radius: 8px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  input, select, textarea {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+  }
+  
+  button {
+    padding: 12px;
+    background-color: #803939;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .mensaje {
+    color: green;
+    margin-top: 10px;
+  }
+  
+  .error {
+    color: red;
+    margin-top: 10px;
+  }
+  
+  .footer {
+    background-color: #141E54;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    height: 50px;
+  }
+  /* Estilos para el formulario */
+.grid {
+    display: grid;
+    gap: 36px;
+  }
+  
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .w-full {
+    width: 100%;
+  }
+  
+  .border {
+    border: 1px solid #ccc;
+  }
+  
+  .rounded {
+    border-radius: 8px;
+  }
+  
+  .px-3 {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  
+  .py-2 {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  
+  .mt-4 {
+    margin-top: 16px;
+  }
+  
+  .mb-4 {
+    margin-bottom: 16px;
+  }
+  
+  .btn-submit {
+    padding: 10px 20px;
+    background-color: #803939;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-submit:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+a {
+    text-decoration: none;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
