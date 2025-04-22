@@ -1,0 +1,40 @@
+<!-- asistencia.component.html -->
+<div class="main-container">
+    <nav>
+      <a routerLink="/menu-medico">Clinica</a>
+      <div class="nav-item">Asistencia</div>
+    </nav>
+  
+    <main class="contenido">
+      <div class="container">
+        <h2>Asistencia del Médico</h2>
+  
+        <form [formGroup]="asistenciaForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <button type="button" (click)="registrarEntrada()" [disabled]="entradaRegistrada">
+              Registrar Hora de Entrada
+            </button>
+          </div>
+  
+          <div class="form-group">
+            <button type="button" (click)="registrarSalida()" [disabled]="!entradaRegistrada || salidaRegistrada">
+              Registrar Hora de Salida
+            </button>
+          </div>
+  
+          <div class="form-group">
+            <button type="button" (click)="borrarRegistro()" [disabled]="!entradaRegistrada">
+              Borrar Registro
+            </button>
+          </div>
+  
+
+        </form>
+      </div>
+    </main>
+  
+    <footer class="footer">
+      ClínicaApp - Sistema de Gestión de recursos humanos
+    </footer>
+  </div>
+  

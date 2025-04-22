@@ -7,6 +7,7 @@ import { MenuRhComponent } from './componentes/menus/menu-rh/menu-rh.component';
 import { NgModule } from '@angular/core';
 import { RegistrarMedicoComponent } from './componentes/rh/registrar-medico/registrar-medico.component';
 import { ActualizarDatosComponent } from './componentes/medico/actualizar-datos/actualizar-datos.component';
+import { AsistenciaComponent } from './componentes/medico/asistencia/asistencia.component'; // Asegúrate de tener este componente
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },  // Ruta de login
@@ -14,6 +15,7 @@ export const routes: Routes = [
   { path: 'menu-rh', component: MenuRhComponent, canActivate: [AuthGuard] },  // Ruta protegida para RH
   { path: 'registrar-medico', component: RegistrarMedicoComponent, canActivate: [AuthGuard] },  // Ruta para registrar médicos
   { path: 'actualizar-datos', component: ActualizarDatosComponent, canActivate: [AuthGuard] },
+  { path: 'asistencia', component: AsistenciaComponent, canActivate: [AuthGuard] },  // Ruta de asistencia protegida
 
   { path: '**', redirectTo: '' }  // Redirección si la ruta no existe
 ];

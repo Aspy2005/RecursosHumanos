@@ -1,0 +1,124 @@
+/* Contenedor principal del componente */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+  }
+  
+  /* Navbar */
+  nav {
+    background-color: #141E54;
+    color: white;
+    margin: 0;
+    padding: 1rem;
+    display: flex;
+    gap: 2rem;
+    font-weight: bold;
+    width: 100%;
+  }
+  
+  .nav-item {
+    cursor: pointer;
+  }
+  
+  /* Contenedor de asistencia */
+  .contenido {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  /* Formulario de asistencia */
+  .container {
+    max-width: 600px;
+    margin: 30px;
+    padding: 30px;
+    border: 1px solid #888;
+    background-color: #ffffff;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    text-align: center;
+  }
+  
+  .container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  
+  /* Estilos para el formulario */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 12px;
+    background-color: #803939;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  button:hover:not(:disabled) {
+    background-color: #692f2f;
+  }
+  
+  /* Mensajes de error y éxito */
+  .error-msg, .success-msg {
+    padding: 10px;
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+  
+  .error-msg {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
+  .success-msg {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  /* Estilos para el pie de página */
+  .footer {
+    background-color: #141E54;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    left: 0;
+  }
+  
+  /* Diseño responsivo */
+  @media (max-width: 768px) {
+    .container {
+      padding: 20px;
+    }
+  
+    button {
+      font-size: 14px;
+    }
+  
+    h2 {
+      font-size: 20px;
+    }
+  }
+  

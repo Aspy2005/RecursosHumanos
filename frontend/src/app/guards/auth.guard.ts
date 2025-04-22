@@ -1,4 +1,3 @@
-// src/app/guards/auth.guard.ts
 import { Injectable } from '@angular/core';
 import {
   CanActivate,
@@ -35,8 +34,15 @@ export class AuthGuard implements CanActivate {
         return false;
       }
 
+      // Prohibir acceso a las rutas de actualizar-datos y asistencia a RH
+      if ((state.url.includes('actualizar-datos') || state.url.includes('asistencia')) && rol !== 'medico') {
+        this.router.navigate(['/']);
+        return false;
+      }
+
+      // Prohibir acceso a registrar-medico si no es RH
       if (state.url.includes('registrar-medico') && rol !== 'rh') {
-        this.router.navigate(['/']);  // Los médicos no pueden acceder a la ruta de registrar-medico
+        this.router.navigate(['/']);
         return false;
       }
 
