@@ -1,0 +1,139 @@
+/* Contenedor principal */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  /* Navbar */
+  nav {
+    background-color: #141E54;
+    color: white;
+    margin: 0;
+    padding: 1rem;
+    display: flex;
+    gap: 2rem;
+    font-weight: bold;
+    width: 100%;
+  }
+  
+  .nav-item {
+    cursor: pointer;
+  }
+  
+  /* Contenido principal */
+  .contenido {
+    flex: 1;
+    background-color: #f5f5f5;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Título del menú */
+  .titulo-menu {
+    font-size: 24px;
+    font-weight: 500;
+    color: #141E54;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Lista de opciones del menú */
+  .menu-lista {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 40px;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .menu-lista li a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .menu-lista li a:hover {
+    background-color: #d5d5d5;
+  }
+  
+  /* Noticias */
+  .noticias {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  .noticia {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    text-align: center;
+  }
+  
+  .noticia img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .noticia h3 {
+    padding: 15px;
+    color: #2f3b5c;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: #141E54;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    height: 50px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .menu-lista {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+  
+    .noticias {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  /* Estilo para el botón de cerrar sesión */
+nav button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  list-style-type: none;
+}
+

@@ -1,0 +1,145 @@
+/* NAV */
+nav {
+    background-color: #141E54;
+    color: white;
+    margin: 0;
+    padding: 1rem;
+    display: flex;
+    gap: 2rem;
+    font-weight: bold;
+    width: 100%;
+}
+
+.nav-item {
+    cursor: pointer;
+}
+
+/* Contenedor principal del formulario */
+.container {
+    max-width: 950px;
+    margin: 30px auto;
+    padding: 30px;
+    border: 1px solid #888;
+    background-color: #fdfdfd;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+}
+
+/* Título automático para formularios */
+.container h2 {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+/* Grilla de campos */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+    gap: 20px; /* Espacio entre las columnas y filas */
+    padding: 0 20px;
+}
+
+/* Estructura de cada campo */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+/* Etiquetas */
+.form-group label {
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+/* Inputs */
+.form-group input {
+    padding: 6px 10px;
+    border-radius: 2px;
+    border: 1px solid #999;
+    font-size: 14px;
+}
+
+/* Mensajes de error */
+.error-msg {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Botón */
+button[type="submit"] {
+    margin: 30px auto 0 auto;
+    display: block;
+    padding: 8px 24px;
+    background-color: #803939;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #692f2f;
+}
+
+button[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Mensaje de éxito */
+.mensaje-exito {
+    color: green;
+    font-size: 14px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* FOOTER */
+.footer {
+    background-color: #141E54;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    border: none;
+    box-shadow: none;
+    height: 10px;
+}
+
+/* Contenido entre nav y footer */
+.contenido {
+    flex: 1;
+    padding: 2rem;
+}
+
+/* Estructura principal */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Cargando */
+.loading {
+    text-align: center;
+    font-size: 18px;
+    color: #888;
+}
+a {
+    text-decoration: none;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }

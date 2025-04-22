@@ -1,0 +1,53 @@
+<div class="main-container">
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-item">Clínica</div>
+    <div class="nav-item">Gestión RH</div>
+    <button (click)="cerrarSesion()">Cerrar sesión</button>
+  </nav>
+
+  <!-- Contenido -->
+  <div class="contenido">
+    <h2 class="titulo-menu">Menú del Coordinador</h2>
+    <ul class="menu-lista">
+      <li><a routerLink="/registrar-medico">Registrar Médico</a></li>  
+      <li><a routerLink="/vacaciones-permisos">Permisos</a></li>
+      <li><a routerLink="/reporte-evaluacion">Evaluación de Empleados</a></li>
+      <li><a routerLink="/gestor-empleado">Gestor de Empleados</a></li>
+      <li><a routerLink="/generar-reporte">Reporte de Empleados</a></li>
+      
+
+    </ul>
+
+    <main class="noticias">
+      <section class="noticia">
+        <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=800&q=80" alt="Reconocimiento a empleado">
+        <h3>Reconocimiento al Empleado del Mes</h3>
+        <p>Felicitamos a Laura Martínez por su destacada labor en el área de atención al cliente. Su compromiso, actitud positiva y resultados sobresalientes la hacen merecedora de este reconocimiento.</p>
+        <p>Su dedicación inspira a todo el equipo a seguir ofreciendo un servicio de calidad y calidez humana.</p>
+      </section>
+    
+      <section class="noticia">
+        <img src="https://images.unsplash.com/photo-1591696205602-2f950c417cb9?auto=format&fit=crop&w=800&q=80" alt="Control de asistencia">
+        <h3>Nuevo Sistema de Control de Asistencia</h3>
+        <p>Con el objetivo de mejorar la puntualidad y facilitar la gestión de horarios, se ha implementado un nuevo sistema digital de control de asistencia. El sistema estará activo a partir del próximo lunes.</p>
+        <p>Los empleados podrán registrar su ingreso y salida desde sus dispositivos móviles o en los terminales disponibles en cada sede.</p>
+      </section>
+      
+    
+      <section class="noticia">
+        <img src="https://images.unsplash.com/photo-1580894908361-967195033215?auto=format&fit=crop&w=800&q=80" alt="Actividades deportivas">
+        <h3>Campeonato Interempresarial 2025</h3>
+        <p>¡Felicidades al equipo "Clínica FC" por su excelente participación en el torneo deportivo interempresarial! Con disciplina, trabajo en equipo y mucho esfuerzo lograron llegar a la final.</p>
+        <p>Este tipo de actividades fortalecen la unión y el espíritu corporativo. ¡Gracias a todos los que participaron y apoyaron!</p>
+      </section>
+    </main>
+    
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    ClínicaApp - Sistema de Gestión de Recursos Humanos
+  </footer>
+</div>
+<button (click)="cerrarSesion()">Cerrar sesión</button>

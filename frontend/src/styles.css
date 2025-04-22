@@ -1,0 +1,22 @@
+/* Reset general */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  /* Eliminar scroll horizontal */
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* Opcional: quitar línea blanca si el body tiene background distinto */
+  body {
+    background-color: white;
+  }
+  nav{
+    font-family: Arial, Helvetica, sans-serif;
+
+  }
+  
