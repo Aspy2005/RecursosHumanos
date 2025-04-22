@@ -1,6 +1,7 @@
 package com.example.demo.controlador;
 
 import com.example.demo.modelo.Medico;
+import com.example.demo.repositorio.MedicoRepositorio;
 import com.example.demo.servicios.MedicoServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,9 @@ public class MedicoControlador {
 
     @Autowired
     private MedicoServicio medicoService;
+    
+    @Autowired
+    private MedicoRepositorio medicoRepositorio;
 
     @GetMapping
     public List<Medico> obtenerTodosLosMedicos() {
@@ -50,4 +54,12 @@ public class MedicoControlador {
         medicoService.eliminarMedico(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    
+    @GetMapping("/validar-cedula/{cedula}")
+    public ResponseEntity<Boolean> validarCedula(@PathVariable int cedula) {
+        boolean existe = medicoRepositorio.existsById(cedula);
+        return ResponseEntity.ok(!existe); // true si está disponible, false si ya existe
+    }
+
+
 }

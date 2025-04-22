@@ -11,6 +11,11 @@
 
     constructor(private http: HttpClient) {}
 
+
+     // Verificar si la cédula ya está registrada
+  validarCedula(cedula: string): Observable<boolean> {
+    return this.http.get<boolean>(`${this.baseUrl}/validar-cedula/${cedula}`);
+  }
     // Registrar un nuevo médico
     registrarMedico(medico: Medico): Observable<Medico> {
       return this.http.post<Medico>(`${this.baseUrl}/registrar`, medico);

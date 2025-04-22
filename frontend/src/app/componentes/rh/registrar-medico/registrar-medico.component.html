@@ -1,113 +1,146 @@
 <div class="main-container">
-    <!-- Barra de navegación -->
-    <nav>
-      <a routerLink="/menu-rh">Clinica</a>
-      <div class="nav-item">Registro de Médico</div>
-    </nav>
-  
-    <!-- Contenido principal -->
-    <main class="contenido">
-      <form (ngSubmit)="onSubmit()" #medicoForm="ngForm" class="formulario-empleado">
-        <div class="form-grid">
-          <!-- Cédula -->
-          <div class="form-campo">
-            <label for="idMedico">Cédula</label>
-            <input type="number" id="idMedico" class="form-control" required [(ngModel)]="medico.idMedico" name="idMedico" #idMedico="ngModel">
-            <div *ngIf="idMedico.invalid && idMedico.touched" class="error-msg">Cédula es requerida.</div>
-          </div>
-  
-          <!-- Nombre -->
-          <div class="form-campo">
-            <label for="nombreMedico">Nombre</label>
-            <input type="text" id="nombreMedico" class="form-control" required [(ngModel)]="medico.nombreMedico" name="nombreMedico" #nombreMedico="ngModel">
-            <div *ngIf="nombreMedico.invalid && nombreMedico.touched" class="error-msg">Nombre es requerido.</div>
-          </div>
-  
-          <!-- Apellido -->
-          <div class="form-campo">
-            <label for="apellidoMedico">Apellido</label>
-            <input type="text" id="apellidoMedico" class="form-control" required [(ngModel)]="medico.apellidoMedico" name="apellidoMedico" #apellidoMedico="ngModel">
-            <div *ngIf="apellidoMedico.invalid && apellidoMedico.touched" class="error-msg">Apellido es requerido.</div>
-          </div>
-  
-          <!-- Teléfono -->
-          <div class="form-campo">
-            <label for="telefonoMedico">Teléfono</label>
-            <input type="text" id="telefonoMedico" class="form-control" required [(ngModel)]="medico.telefonoMedico" name="telefonoMedico" #telefonoMedico="ngModel">
-            <div *ngIf="telefonoMedico.invalid && telefonoMedico.touched" class="error-msg">Teléfono es requerido.</div>
-          </div>
-  
-          <!-- Dirección -->
-          <div class="form-campo">
-            <label for="direccionMedico">Dirección</label>
-            <input type="text" id="direccionMedico" class="form-control" required [(ngModel)]="medico.direccionMedico" name="direccionMedico" #direccionMedico="ngModel">
-            <div *ngIf="direccionMedico.invalid && direccionMedico.touched" class="error-msg">Dirección es requerida.</div>
-          </div>
-  
-          <!-- Fecha de Ingreso -->
-          <div class="form-campo">
-            <label for="fechaIngreso">Fecha de Ingreso</label>
-            <input type="date" id="fechaIngreso" class="form-control" required [(ngModel)]="medico.fechaIngreso" name="fechaIngreso" #fechaIngreso="ngModel">
-            <div *ngIf="fechaIngreso.invalid && fechaIngreso.touched" class="error-msg">Fecha de ingreso es requerida.</div>
-          </div>
-  
-          <!-- Edad -->
-          <div class="form-campo">
-            <label for="edadMedico">Edad</label>
-            <input type="number" id="edadMedico" class="form-control" required [(ngModel)]="medico.edadMedico" name="edadMedico" #edadMedico="ngModel">
-            <div *ngIf="edadMedico.invalid && edadMedico.touched" class="error-msg">Edad es requerida.</div>
-          </div>
-  
-          <!-- Rol -->
-          <div class="form-campo">
-            <label for="rolMedico">Rol</label>
-            <input type="text" id="rolMedico" class="form-control" required [(ngModel)]="medico.rolMedico" name="rolMedico" #rolMedico="ngModel">
-            <div *ngIf="rolMedico.invalid && rolMedico.touched" class="error-msg">Rol es requerido.</div>
-          </div>
-  
-          <!-- Turno -->
-          <div class="form-campo">
-            <label for="turnoMedico">Turno</label>
-            <input type="text" id="turnoMedico" class="form-control" required [(ngModel)]="medico.turnoMedico" name="turnoMedico" #turnoMedico="ngModel">
-            <div *ngIf="turnoMedico.invalid && turnoMedico.touched" class="error-msg">Turno es requerido.</div>
-          </div>
-  
-          <!-- Correo -->
-          <div class="form-campo">
-            <label for="correoMedico">Correo</label>
-            <input type="email" id="correoMedico" class="form-control" required [(ngModel)]="medico.correoMedico" name="correoMedico" #correoMedico="ngModel">
-            <div *ngIf="correoMedico.invalid && correoMedico.touched" class="error-msg">Correo es requerido.</div>
-          </div>
-  
-          <!-- Salario -->
-          <div class="form-campo">
-            <label for="salarioMedico">Salario</label>
-            <input type="number" id="salarioMedico" class="form-control" required [(ngModel)]="medico.salarioMedico" name="salarioMedico" #salarioMedico="ngModel">
-            <div *ngIf="salarioMedico.invalid && salarioMedico.touched" class="error-msg">Salario es requerido.</div>
-          </div>
-  
-          <!-- Residencia -->
-          <div class="form-campo">
-            <label for="residenciaMedico">Residencia</label>
-            <input type="text" id="residenciaMedico" class="form-control" required [(ngModel)]="medico.residenciaMedico" name="residenciaMedico" #residenciaMedico="ngModel">
-            <div *ngIf="residenciaMedico.invalid && residenciaMedico.touched" class="error-msg">Residencia es requerida.</div>
-          </div>
-  
-          <!-- Cargo -->
-          <div class="form-campo">
-            <label for="cargoMedico">Cargo</label>
-            <input type="text" id="cargoMedico" class="form-control" required [(ngModel)]="medico.cargoMedico" name="cargoMedico" #cargoMedico="ngModel">
-            <div *ngIf="cargoMedico.invalid && cargoMedico.touched" class="error-msg">Cargo es requerido.</div>
+  <!-- Barra de navegación -->
+  <nav>
+    <a routerLink="/menu-rh">Clínica</a>
+    <div class="nav-item">Registro de Médico</div>
+  </nav>
+
+  <!-- Contenido principal -->
+  <main class="contenido">
+    <form [formGroup]="medicoForm" (ngSubmit)="onSubmit()" class="formulario-empleado">
+      <div class="form-grid">
+        
+        <!-- Cédula -->
+        <div class="form-campo">
+          <label for="idMedico">Cédula</label>
+          <input type="number" id="idMedico" class="form-control" formControlName="idMedico">
+          <div *ngIf="medicoForm.get('idMedico')?.touched && medicoForm.get('idMedico')?.errors" class="error-msg">
+            <div *ngIf="medicoForm.get('idMedico')?.hasError('required')">
+              La cédula es requerida.
+            </div>
+
+            <div *ngIf="medicoForm.get('idMedico')?.hasError('cedulaExistente')">
+              La cédula ya está registrada.
+            </div>
           </div>
         </div>
-  
-        <button type="submit" [disabled]="medicoForm.invalid">Registrar</button>
-      </form>
-    </main>
-  
-    <!-- Pie de página -->
-    <footer class="footer">
-      ClínicaApp - Sistema de Gestión de Recursos Humanos
-    </footer>
-  </div>
-  
+
+        <!-- Nombre -->
+        <div class="form-campo">
+          <label for="nombreMedico">Nombre</label>
+          <input type="text" id="nombreMedico" class="form-control" formControlName="nombreMedico">
+          <div *ngIf="medicoForm.get('nombreMedico')?.invalid && medicoForm.get('nombreMedico')?.touched" class="error-msg">
+            Nombre es requerido.
+          </div>
+        </div>
+
+        <!-- Apellido -->
+        <div class="form-campo">
+          <label for="apellidoMedico">Apellido</label>
+          <input type="text" id="apellidoMedico" class="form-control" formControlName="apellidoMedico">
+          <div *ngIf="medicoForm.get('apellidoMedico')?.invalid && medicoForm.get('apellidoMedico')?.touched" class="error-msg">
+            Apellido es requerido.
+          </div>
+        </div>
+
+        <!-- Teléfono -->
+        <div class="form-campo">
+          <label for="telefonoMedico">Teléfono</label>
+          <input type="text" id="telefonoMedico" class="form-control" formControlName="telefonoMedico">
+          <div *ngIf="medicoForm.get('telefonoMedico')?.invalid && medicoForm.get('telefonoMedico')?.touched" class="error-msg">
+            Teléfono es requerido y debe tener 10 dígitos numéricos.
+          </div>
+        </div>
+
+        <!-- Edad -->
+        <div class="form-campo">
+          <label for="edadMedico">Edad</label>
+          <input type="number" id="edadMedico" class="form-control" formControlName="edadMedico">
+          <div *ngIf="medicoForm.get('edadMedico')?.invalid && medicoForm.get('edadMedico')?.touched" class="error-msg">
+            Edad debe ser mayor de 18 y menor de 65 años.
+          </div>
+        </div>
+
+        <!-- Correo -->
+        <div class="form-campo">
+          <label for="correoMedico">Correo</label>
+          <input type="email" id="correoMedico" class="form-control" formControlName="correoMedico">
+          <div *ngIf="medicoForm.get('correoMedico')?.invalid && medicoForm.get('correoMedico')?.touched" class="error-msg">
+            Correo debe tener formato válido.
+          </div>
+        </div>
+
+        <!-- Dirección -->
+        <div class="form-campo">
+          <label for="direccionMedico">Dirección</label>
+          <input type="text" id="direccionMedico" class="form-control" formControlName="direccionMedico">
+          <div *ngIf="medicoForm.get('direccionMedico')?.invalid && medicoForm.get('direccionMedico')?.touched" class="error-msg">
+            Dirección es requerida.
+          </div>
+        </div>
+
+        <!-- Fecha de Ingreso -->
+        <div class="form-campo">
+          <label for="fechaIngreso">Fecha de Ingreso</label>
+          <input type="date" id="fechaIngreso" class="form-control" formControlName="fechaIngreso">
+          <div *ngIf="medicoForm.get('fechaIngreso')?.invalid && medicoForm.get('fechaIngreso')?.touched" class="error-msg">
+            Fecha de ingreso es requerida.
+          </div>
+        </div>
+
+        <!-- Rol -->
+        <div class="form-campo">
+          <label for="rolMedico">Rol</label>
+          <input type="text" id="rolMedico" class="form-control" formControlName="rolMedico">
+          <div *ngIf="medicoForm.get('rolMedico')?.invalid && medicoForm.get('rolMedico')?.touched" class="error-msg">
+            Rol es requerido.
+          </div>
+        </div>
+
+        <!-- Turno -->
+        <div class="form-campo">
+          <label for="turnoMedico">Turno</label>
+          <input type="text" id="turnoMedico" class="form-control" formControlName="turnoMedico">
+          <div *ngIf="medicoForm.get('turnoMedico')?.invalid && medicoForm.get('turnoMedico')?.touched" class="error-msg">
+            Turno es requerido.
+          </div>
+        </div>
+
+        <!-- Salario -->
+        <div class="form-campo">
+          <label for="salarioMedico">Salario</label>
+          <input type="number" id="salarioMedico" class="form-control" formControlName="salarioMedico">
+          <div *ngIf="medicoForm.get('salarioMedico')?.invalid && medicoForm.get('salarioMedico')?.touched" class="error-msg">
+            Salario es requerido y debe ser un número mayor a 0.
+          </div>
+        </div>
+
+        <!-- Residencia -->
+        <div class="form-campo">
+          <label for="residenciaMedico">Residencia</label>
+          <input type="text" id="residenciaMedico" class="form-control" formControlName="residenciaMedico">
+          <div *ngIf="medicoForm.get('residenciaMedico')?.invalid && medicoForm.get('residenciaMedico')?.touched" class="error-msg">
+            Residencia es requerida.
+          </div>
+        </div>
+
+        <!-- Cargo -->
+        <div class="form-campo">
+          <label for="cargoMedico">Cargo</label>
+          <input type="text" id="cargoMedico" class="form-control" formControlName="cargoMedico">
+          <div *ngIf="medicoForm.get('cargoMedico')?.invalid && medicoForm.get('cargoMedico')?.touched" class="error-msg">
+            Cargo es requerido.
+          </div>
+        </div>
+
+      </div>
+
+      <button type="submit" [disabled]="medicoForm.invalid">Registrar</button>
+    </form>
+  </main>
+
+  <!-- Pie de página -->
+  <footer class="footer">
+    ClínicaApp - Sistema de Gestión de Recursos Humanos
+  </footer>
+</div>

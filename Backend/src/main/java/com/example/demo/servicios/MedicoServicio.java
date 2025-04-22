@@ -2,6 +2,9 @@ package com.example.demo.servicios;
 
 import com.example.demo.modelo.Medico;
 import com.example.demo.repositorio.MedicoRepositorio;
+
+import jakarta.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +17,12 @@ public class MedicoServicio {
 
     @Autowired
     private MedicoRepositorio medicoRepository;
+
     @Autowired
     private LoginMedicoServicio loginMedicoServicio;
+
+    @Autowired
+    private CorreoService correoService; // Inyectamos el servicio de correo
 
     public List<Medico> obtenerTodosLosMedicos() {
         return medicoRepository.findAll();
@@ -35,6 +42,13 @@ public class MedicoServicio {
         // Creamos el login asociado
         loginMedicoServicio.crearLoginMedico(nuevoMedico, passwordGenerada);
 
+        // Enviamos el correo con las credenciales
+        try {
+            correoService.enviarCorreoContrasena(nuevoMedico.getCorreoMedico(), String.valueOf(nuevoMedico.getIdMedico()), passwordGenerada);
+        } catch (MessagingException e) {
+            // Aquí puedes manejar el error, por ejemplo, logueando el problema
+            System.out.println("Error al enviar el correo: " + e.getMessage());
+        }
         // Aquí podrías imprimirla, enviarla por correo, etc.
         System.out.println("Contraseña generada para el médico " + nuevoMedico.getNombreMedico() + ": " + passwordGenerada);
 
