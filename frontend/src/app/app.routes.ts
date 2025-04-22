@@ -13,6 +13,7 @@ import { GestionarSolicitudesComponent } from './componentes/rh/gestionar-solici
 import { ActualizarDatosComponent } from './componentes/medico/actualizar-datos/actualizar-datos.component';
 import { AsistenciaComponent } from './componentes/medico/asistencia/asistencia.component';
 import { SolicitudPermisoComponent } from './componentes/medico/solicitud-permiso/solicitud-permiso.component';
+import { GestionarEmpleadoComponent } from './componentes/rh/gestionar-empleado/gestionar-empleado.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -27,6 +28,7 @@ export const routes: Routes = [
   { path: 'menu-rh', component: MenuRhComponent, canActivate: [AuthGuard] },
   { path: 'registrar-medico', component: RegistrarMedicoComponent, canActivate: [AuthGuard] },
   { path: 'gestionar-solicitudes', component: GestionarSolicitudesComponent, canActivate: [AuthGuard] },
+  { path: 'gestor-empleado', component: GestionarEmpleadoComponent, canActivate: [AuthGuard] },
 
   // Ruta wildcard para redirigir a login si no existe
   { path: '**', redirectTo: '' }

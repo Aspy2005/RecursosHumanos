@@ -30,18 +30,27 @@ public class LoginControlador {
         Map<String, Object> response = new HashMap<>();
 
         try {
-            Long id = Long.parseLong(usuario);  // Ahora este "usuario" es el ID del médico o del RH
+            Long id = Long.parseLong(usuario);  // Cédula como ID
 
-            // Buscar por ID del médico
+            // Buscar médico
             LoginMedico loginMedico = loginMedicoServicio.buscarPorIdMedico(id);
             if (loginMedico != null && loginMedico.getPasswordMedico().equals(contrasena)) {
+
+                // Validamos estado del médico
+                if (!"ACTIVO".equalsIgnoreCase(loginMedico.getMedico().getEstado())) {
+                    response.put("autenticado", false);
+                    response.put("motivo", "USUARIO_INACTIVO");
+                    response.put("mensaje", "Este médico está inactivo.");
+                    return response;
+                }
+
                 response.put("autenticado", true);
                 response.put("rol", "medico");
                 response.put("id", loginMedico.getMedico().getIdMedico());
                 return response;
             }
 
-            // Buscar por ID del RH
+            // Buscar RH
             LoginRH loginRH = loginRHServicio.buscarPorIdRh(id);
             if (loginRH != null && loginRH.getPasswordRh().equals(contrasena)) {
                 response.put("autenticado", true);
@@ -60,6 +69,7 @@ public class LoginControlador {
         response.put("mensaje", "Usuario o contraseña incorrectos");
         return response;
     }
+
 
     
 

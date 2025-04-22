@@ -30,6 +30,16 @@
       return this.http.put<Medico>(`${this.baseUrl}/${id}`, medico);
     }
     
+    obtenerMedicosActivos(): Observable<Medico[]> {
+      return this.http.get<Medico[]>(`${this.baseUrl}/activos`);
+    }
+    
+    inactivarMedico(id: number): Observable<any> {
+      return this.http.put(`${this.baseUrl}/inactivar/${id}`, {});
+    }
+    reactivarMedico(id: number): Observable<any> {
+      return this.http.put(`${this.baseUrl}/reactivar/${id}`, {});
+    }
     
     
   }

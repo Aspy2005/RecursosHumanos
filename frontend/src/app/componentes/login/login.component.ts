@@ -33,25 +33,27 @@ export class LoginComponent {
         next: (res) => {
           console.log('Respuesta del servidor:', res);
   
-          // Verificar si la autenticación fue exitosa
           if (res.autenticado) {
-            // Guardamos el usuario con los datos de la respuesta
             this.loginService.guardarUsuario({
               id: res.id,
               rol: res.rol
             });
   
-            // Verificar si el rol es 'medico' o 'rh' y redirigir
             if (res.rol?.toLowerCase() === 'medico') {
               this.router.navigate(['/menu-medico']);
             } else if (res.rol?.toLowerCase() === 'rh') {
               this.router.navigate(['/menu-rh']);
             } else {
               this.error = 'Rol no reconocido.';
-              console.error('Rol no reconocido:', res.rol);
             }
+  
           } else {
-            this.error = 'Credenciales inválidas o error en la autenticación.';
+            // Aquí detectamos si es por estado INACTIVO
+            if (res.motivo === 'USUARIO_INACTIVO') {
+              this.error = 'Este usuario está inactivo. Contacta con RH.';
+            } else {
+              this.error = 'Credenciales inválidas o error en la autenticación.';
+            }
           }
         },
         error: () => {
@@ -59,5 +61,6 @@ export class LoginComponent {
         }
       });
   }
+  
   
 }  

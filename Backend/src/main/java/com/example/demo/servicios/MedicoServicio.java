@@ -59,11 +59,36 @@ public class MedicoServicio {
         return UUID.randomUUID().toString().substring(0, 8); // 8 caracteres aleatorios
     }
 
-    public void eliminarMedico(int id) {
-        medicoRepository.deleteById(id);
+    public Medico inactivarMedico(int id) {
+        Optional<Medico> optional = medicoRepository.findById(id);
+        if (optional.isPresent()) {
+            Medico medico = optional.get();
+            medico.setEstado("INACTIVO");
+            return medicoRepository.save(medico);
+        } else {
+            throw new RuntimeException("Médico no encontrado");
+        }
     }
+
 
     public Medico actualizarMedico(Medico medico) {
         return medicoRepository.save(medico);
     }
+    
+    public List<Medico> obtenerMedicosActivos() {
+        return medicoRepository.findByEstado("ACTIVO");
+    }
+
+    
+    public Medico reactivarMedico(int id) {
+        Optional<Medico> optional = medicoRepository.findById(id);
+        if (optional.isPresent()) {
+            Medico medico = optional.get();
+            medico.setEstado("ACTIVO");
+            return medicoRepository.save(medico);
+        } else {
+            throw new RuntimeException("Médico no encontrado");
+        }
+    }
+
 }

@@ -12,4 +12,6 @@ export interface Medico {
   salarioMedico: number | null;
   residenciaMedico: string;
   cargoMedico: string;
+  estado?: string; // 👈 aquí el nuevo campo
+
 }

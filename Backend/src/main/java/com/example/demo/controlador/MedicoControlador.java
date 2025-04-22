@@ -49,11 +49,16 @@ public class MedicoControlador {
         return new ResponseEntity<>(medicoActualizado, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarMedico(@PathVariable int id) {
-        medicoService.eliminarMedico(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    @PutMapping("/inactivar/{id}")
+    public ResponseEntity<?> inactivarMedico(@PathVariable int id) {
+        try {
+            Medico medicoInactivado = medicoService.inactivarMedico(id);
+            return new ResponseEntity<>(medicoInactivado, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>("No se pudo inactivar el médico", HttpStatus.NOT_FOUND);
+        }
     }
+
     
     @GetMapping("/validar-cedula/{cedula}")
     public ResponseEntity<Boolean> validarCedula(@PathVariable int cedula) {
@@ -61,5 +66,20 @@ public class MedicoControlador {
         return ResponseEntity.ok(!existe); // true si está disponible, false si ya existe
     }
 
+    @GetMapping("/activos")
+    public List<Medico> obtenerMedicosActivos() {
+        return medicoService.obtenerMedicosActivos();
+    }
+    @PutMapping("/reactivar/{id}")
+    public ResponseEntity<?> reactivarMedico(@PathVariable int id) {
+        try {
+            Medico medicoReactivado = medicoService.reactivarMedico(id);
+            return new ResponseEntity<>(medicoReactivado, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>("No se pudo reactivar el médico", HttpStatus.NOT_FOUND);
+        }
+    }
+
+    
 
 }

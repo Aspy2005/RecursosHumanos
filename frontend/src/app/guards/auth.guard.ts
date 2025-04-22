@@ -33,7 +33,9 @@ export class AuthGuard implements CanActivate {
     const soloRh = [
       'menu-rh',
       'registrar-medico',
-      'gestionar-solicitudes'
+      'gestionar-solicitudes',
+      'gestor-empleado'
+
     ];
     if (soloRh.some(r => url.includes(r)) && rol !== 'rh') {
       this.router.navigate(['/']);

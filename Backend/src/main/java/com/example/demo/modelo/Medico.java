@@ -10,6 +10,10 @@ public class Medico {
     @Id
     @Column(name = "id_medico")
     private int idMedico;  // ID es la cédula y se ingresa manualmente
+    
+    @Column(name = "estado")
+    private String estado = "ACTIVO";
+
 
     @Column(name = "nombre_medico")
     private String nombreMedico;
@@ -47,25 +51,29 @@ public class Medico {
     @Column(name = "cargo_medico")
     private String cargoMedico;
 
-    public Medico() {}
+	public Medico() {
+		super();
+	}
 
-    public Medico(int idMedico, String nombreMedico, String apellidoMedico, String telefonoMedico,
-                  String direccionMedico, Date fechaIngreso, int edadMedico, String rolMedico, String turnoMedico,
-                  String correoMedico, float salarioMedico, String residenciaMedico, String cargoMedico) {
-        this.idMedico = idMedico;
-        this.nombreMedico = nombreMedico;
-        this.apellidoMedico = apellidoMedico;
-        this.telefonoMedico = telefonoMedico;
-        this.direccionMedico = direccionMedico;
-        this.fechaIngreso = fechaIngreso;
-        this.edadMedico = edadMedico;
-        this.rolMedico = rolMedico;
-        this.turnoMedico = turnoMedico;
-        this.correoMedico = correoMedico;
-        this.salarioMedico = salarioMedico;
-        this.residenciaMedico = residenciaMedico;
-        this.cargoMedico = cargoMedico;
-    }
+	public Medico(int idMedico, String estado, String nombreMedico, String apellidoMedico, String telefonoMedico,
+			String direccionMedico, Date fechaIngreso, int edadMedico, String rolMedico, String turnoMedico,
+			String correoMedico, float salarioMedico, String residenciaMedico, String cargoMedico) {
+		super();
+		this.idMedico = idMedico;
+		this.estado = estado;
+		this.nombreMedico = nombreMedico;
+		this.apellidoMedico = apellidoMedico;
+		this.telefonoMedico = telefonoMedico;
+		this.direccionMedico = direccionMedico;
+		this.fechaIngreso = fechaIngreso;
+		this.edadMedico = edadMedico;
+		this.rolMedico = rolMedico;
+		this.turnoMedico = turnoMedico;
+		this.correoMedico = correoMedico;
+		this.salarioMedico = salarioMedico;
+		this.residenciaMedico = residenciaMedico;
+		this.cargoMedico = cargoMedico;
+	}
 
 	public int getIdMedico() {
 		return idMedico;
@@ -73,6 +81,14 @@ public class Medico {
 
 	public void setIdMedico(int idMedico) {
 		this.idMedico = idMedico;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 	public String getNombreMedico() {
