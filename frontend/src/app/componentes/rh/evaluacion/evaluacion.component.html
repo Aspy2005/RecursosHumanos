@@ -1,0 +1,148 @@
+<div class="main-container">
+    <!-- Navbar -->
+    <nav>
+      <a routerLink="/menu-rh">Clínica</a>
+      <div class="nav-item">Evaluación de Médicos</div>
+    </nav>
+  
+    <!-- Contenido -->
+    <div class="content-container">
+      <div class="form-box">
+        <h2 class="text-center mb-4">Evaluación de Médicos</h2>
+  
+        <!-- Lista de médicos -->
+        <div *ngIf="!medicoSeleccionado" class="solicitud-card">
+          <h4>Selecciona un médico para evaluar</h4>
+          <ul class="list-group mt-3">
+            <li *ngFor="let medico of medicos" class="list-group-item rounded-3 mb-2">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <small class="text-muted">
+                    ID: {{ medico.idMedico }} | Nombre: {{ medico.nombreMedico }} {{ medico.apellido }}
+                  </small>
+                </div>
+                <button class="btn btn-primary btn-sm rounded-pill px-3" (click)="seleccionarMedico(medico)">Evaluar</button>
+              </div>
+            </li>
+          </ul>
+        </div>
+  
+        <!-- Formulario de evaluación -->
+        <div *ngIf="medicoSeleccionado" class="solicitud-card">
+          <h4 class="mb-3">Formulario de Evaluación</h4>
+  
+          <div class="row mb-3">
+            <div class="col-md-4"><strong>Fecha de evaluación:</strong> {{ fechaHoy }}</div>
+            <div class="col-md-4"><strong>Médico:</strong> {{ medicoSeleccionado.nombreMedico }} {{ medicoSeleccionado.apellido }}</div>
+            <div class="col-md-4"><strong>ID:</strong> {{ medicoSeleccionado.idMedico }}</div>
+          </div>
+  
+          <!-- Filtros -->
+          <div class="row mb-3">
+            <div class="col-md-3">
+              <label class="form-label">Mes</label>
+              <select [(ngModel)]="filtroMes" (change)="filtrarRegistros()" class="form-select rounded-3">
+                <option *ngFor="let mes of meses" [value]="mes.valor">{{ mes.nombre }}</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Año</label>
+              <input [(ngModel)]="filtroAnio" type="number" class="form-control rounded-3" (change)="filtrarRegistros()" />
+            </div>
+          </div>
+  <br>
+          <!-- Registros -->
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <h5>Asistencia</h5>
+              <ul class="list-group">
+                <li *ngFor="let a of registrosAsistenciaPaginados" class="list-group-item rounded-2">
+                    <span><strong>Fecha:</strong> {{ a.fecha }}</span> | 
+                    <span><strong>Horas trabajadas:</strong> {{ a.horasTrabajadas }}</span>
+                                    </li>
+              </ul>
+            </div>
+            <br>
+            <div class="col-md-6">
+              <h5>PQR</h5>
+              <ul class="list-group">
+                <li *ngFor="let p of registrosPqrPaginados" class="list-group-item rounded-2">
+                  {{ p.fecha }} - {{ p.descripcion }}
+                </li>
+              </ul>
+            </div>
+          </div>
+  <br>
+          <!-- Paginación -->
+          <div class="d-flex justify-content-center mb-3">
+            <button class="btn btn-outline-secondary me-2" [disabled]="pagina === 0" (click)="paginaAnterior()">Anterior</button>
+            <button class="btn btn-outline-secondary" [disabled]="(pagina + 1) * elementosPorPagina >= registrosAsistencia.length" (click)="paginaSiguiente()">Siguiente</button>
+          </div>
+  <br>
+          <!-- Calificaciones -->
+          <div class="row mb-3">
+            <!-- Calificación Asistencia -->
+            <div class="col-md-6">
+              <label class="form-label d-block">Calificación Asistencia</label>
+              <div class="btn-group" role="group" aria-label="Calificación Asistencia">
+                <ng-container *ngFor="let n of [1,2,3,4,5]">
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="asistencia"
+                    [id]="'asistencia' + n"
+                    [value]="n"
+                    [(ngModel)]="calificacionAsistencia"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-primary" [for]="'asistencia' + n">
+                    {{ n }}
+                  </label>
+                </ng-container>
+              </div>
+            </div>
+          
+            <!-- Calificación PQR -->
+            <div class="col-md-6">
+              <label class="form-label d-block">Calificación PQR</label>
+              <div class="btn-group" role="group" aria-label="Calificación PQR">
+                <ng-container *ngFor="let n of [1,2,3,4,5]">
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="pqr"
+                    [id]="'pqr' + n"
+                    [value]="n"
+                    [(ngModel)]="calificacionPqr"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-success" [for]="'pqr' + n">
+                    {{ n }}
+                  </label>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+          
+  
+          <!-- Observaciones -->
+          <div class="mb-3">
+            <label class="form-label">Observaciones Adicionales</label>
+            <textarea [(ngModel)]="observaciones" rows="3" class="form-control rounded-3"></textarea>
+          </div>
+  
+          <!-- Botones -->
+          <div class="d-flex justify-content-between">
+            <button class="btn btn-outline-danger rounded-pill" (click)="medicoSeleccionado = null">Cancelar</button>
+            <button class="btn btn-success rounded-pill" (click)="guardarEvaluacion()">Guardar Evaluación</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Footer -->
+    <footer class="footer">
+      ClínicaApp - Sistema de Gestión de Recursos Humanos
+    </footer>
+  </div>
+  

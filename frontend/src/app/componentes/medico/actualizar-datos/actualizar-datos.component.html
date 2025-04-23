@@ -53,23 +53,37 @@
           <div class="form-group">
             <label>Teléfono</label>
             <input type="text" formControlName="telefonoMedico" [disabled]="true" />
+            <div class="error-msg" *ngIf="medicoForm.get('telefonoMedico')?.invalid && medicoForm.get('telefonoMedico')?.touched">
+              <small *ngIf="medicoForm.get('telefonoMedico')?.errors?.['required']">El teléfono es obligatorio.</small>
+              <small *ngIf="medicoForm.get('telefonoMedico')?.errors?.['pattern']">El teléfono debe tener exactamente 10 dígitos numéricos.</small>
+            </div>
           </div>
-
+          
           <div class="form-group">
             <label>Dirección</label>
             <input type="text" formControlName="direccionMedico" [disabled]="true" />
+            <div class="error-msg" *ngIf="medicoForm.get('direccionMedico')?.invalid && medicoForm.get('direccionMedico')?.touched">
+              <small *ngIf="medicoForm.get('direccionMedico')?.errors?.['required']">La dirección es obligatoria.</small>
+            </div>
           </div>
           
-
           <div class="form-group">
             <label>Correo Electrónico</label>
             <input type="email" formControlName="correoMedico" [disabled]="true" />
+            <div class="error-msg" *ngIf="medicoForm.get('correoMedico')?.invalid && medicoForm.get('correoMedico')?.touched">
+              <small *ngIf="medicoForm.get('correoMedico')?.errors?.['required']">El correo es obligatorio.</small>
+              <small *ngIf="medicoForm.get('correoMedico')?.errors?.['email']">El formato del correo no es válido.</small>
+            </div>
           </div>
-
+          
           <div class="form-group">
             <label>Residencia</label>
             <input type="text" formControlName="residenciaMedico" [disabled]="true" />
+            <div class="error-msg" *ngIf="medicoForm.get('residenciaMedico')?.invalid && medicoForm.get('residenciaMedico')?.touched">
+              <small *ngIf="medicoForm.get('residenciaMedico')?.errors?.['required']">La residencia es obligatoria.</small>
+            </div>
           </div>
+            
 
           
           <div *ngIf="errorMsg" class="error-msg">{{ errorMsg }}</div>
