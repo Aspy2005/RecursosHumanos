@@ -23,9 +23,10 @@ export class ReporteMedicoComponent implements OnInit {
 
   columnasPorTipo: { [key: string]: string[] } = {
     Asistencia: ['fecha', 'horaEntrada', 'horaSalida'],
-    Desempeño: ['fecha', 'calificacion', 'observaciones'],
+    Desempeño: ['fecha', 'puntajeDesempeno', 'observaciones'], // ← corregido aquí
     Permisos: ['fechaInicio', 'fechaFin', 'motivo', 'estado']
   };
+  
 
   constructor(
     private fb: FormBuilder,
@@ -140,7 +141,7 @@ export class ReporteMedicoComponent implements OnInit {
       fecha: 'Fecha',
       horaEntrada: 'Hora Entrada',
       horaSalida: 'Hora Salida',
-      calificacion: 'Calificación',
+      puntajeDesempeno: 'Calificación',
       observaciones: 'Observaciones',
       fechaInicio: 'Fecha Inicio',
       fechaFin: 'Fecha Fin',
