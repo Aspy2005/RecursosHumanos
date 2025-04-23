@@ -4,6 +4,7 @@ import com.example.demo.DTO.MedicoDTO;
 import com.example.demo.modelo.Medico;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -28,5 +29,11 @@ public interface MedicoRepositorio extends JpaRepository<Medico, Integer> {
 
     @Query("SELECT DISTINCT p.medico FROM PQR p")
     List<Medico> findMedicosConPqr();
+
+    
+    Optional<Medico> findByIdMedico(int idMedico);
+    
+    boolean existsByIdMedico(int idMedico);  // Este es el método que necesitas
+
 
 }

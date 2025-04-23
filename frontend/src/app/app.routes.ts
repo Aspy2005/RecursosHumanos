@@ -15,6 +15,7 @@ import { AsistenciaComponent } from './componentes/medico/asistencia/asistencia.
 import { SolicitudPermisoComponent } from './componentes/medico/solicitud-permiso/solicitud-permiso.component';
 import { GestionarEmpleadoComponent } from './componentes/rh/gestionar-empleado/gestionar-empleado.component';
 import { EvaluacionComponent } from './componentes/rh/evaluacion/evaluacion.component';
+import { ReporteMedicoComponent } from './componentes/rh/reporte-medico/reporte-medico.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -31,6 +32,8 @@ export const routes: Routes = [
   { path: 'gestionar-solicitudes', component: GestionarSolicitudesComponent, canActivate: [AuthGuard] },
   { path: 'gestor-empleado', component: GestionarEmpleadoComponent, canActivate: [AuthGuard] },
   { path: 'evaluar-empleado', component: EvaluacionComponent, canActivate: [AuthGuard] },
+  { path: 'generar-reporte', component: ReporteMedicoComponent, canActivate: [AuthGuard] },
+
 
 
   // Ruta wildcard para redirigir a login si no existe

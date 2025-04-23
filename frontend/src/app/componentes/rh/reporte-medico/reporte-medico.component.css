@@ -1,0 +1,163 @@
+/* Barra de navegación */
+nav {
+    background-color: #141E54;
+    color: white;
+    margin: 0;
+    padding: 1rem;
+    display: flex;
+    gap: 2rem;
+    font-weight: bold;
+    width: 100%;
+  }
+  
+  .nav-item {
+    cursor: pointer;
+  }
+  
+  a {
+    text-decoration: none;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  /* Contenedor principal del formulario */
+  .formulario-empleado {
+    max-width: 950px;
+    margin: 30px auto;
+    padding: 30px;
+    border: 1px solid #888;
+    background-color: #fdfdfd;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+  }
+  
+  /* Campo individual */
+  .form-campo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  /* Etiquetas */
+  .form-campo label {
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  
+  /* Inputs */
+  .form-campo input {
+    padding: 6px 10px;
+    border-radius: 2px;
+    border: 1px solid #999;
+    font-size: 14px;
+  }
+  
+  /* Botones generales */
+  button {
+    padding: 8px 20px;
+    background-color: #141E54;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #0f1742;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Mensajes de error */
+  .text-danger {
+    color: red;
+    font-size: 12px;
+  }
+  
+  /* Pie de página */
+  .footer {
+    background-color: #141E54;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    border: none;
+    box-shadow: none;
+    height: 10px;
+  }
+  
+  .contenido {
+    flex: 1;
+    padding: 2rem;
+  }
+  
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Checklist de selección de tipo de reporte */
+  .seccion-reporte {
+    margin: 30px auto;
+    max-width: 600px;
+    padding: 20px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 5px rgba(0,0,0,0.05);
+  }
+  
+  .reporte-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  
+  .reporte-checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .reporte-checklist label {
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .reporte-checklist input[type="checkbox"] {
+    margin-right: 8px;
+  }
+  
+  /* Botón Confirmar selección */
+  .btn-confirmar {
+    background-color: #803939;
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-confirmar:hover {
+    background-color: #692f2f;
+  }
+  

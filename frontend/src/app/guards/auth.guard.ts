@@ -35,7 +35,8 @@ export class AuthGuard implements CanActivate {
       'registrar-medico',
       'gestionar-solicitudes',
       'gestor-empleado',
-      'evaluar-empleado'
+      'evaluar-empleado',
+      'generar-reporte'
 
     ];
     if (soloRh.some(r => url.includes(r)) && rol !== 'rh') {

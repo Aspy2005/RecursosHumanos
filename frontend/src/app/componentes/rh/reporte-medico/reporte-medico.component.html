@@ -1,0 +1,83 @@
+<div class="main-container">
+    <!-- Barra de navegación -->
+    <nav>
+      <a routerLink="/menu-rh">Clínica</a>
+      <div class="nav-item">Generar Reporte</div>
+    </nav>
+  
+    <!-- Contenido principal -->
+    <main class="contenido">
+      <div class="formulario-empleado">
+        <h2 style="text-align: center; margin-bottom: 20px;">Reporte de Médicos</h2>
+  
+        <form [formGroup]="reporteForm">
+          <div class="form-campo">
+            <label for="cedula">Cédula del Médico</label>
+            <input formControlName="cedula" placeholder="Ingrese cédula del médico" id="cedula" />
+          </div>
+          <button type="button" (click)="buscarMedico()">Confirmar</button>
+        </form>
+  
+        <div *ngIf="mensajeError" class="text-danger" style="margin-top: 10px;">{{ mensajeError }}</div>
+  
+        <!-- Radios para seleccionar un solo tipo -->
+        <div *ngIf="mostrarOpciones" style="margin-top: 20px;">
+          <h3 style="text-align: center;">Seleccione el tipo de reporte:</h3>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;">
+            <label *ngFor="let opcion of opcionesReporte" style="display: flex; gap: 10px; align-items: center;">
+              <input
+                type="radio"
+                name="tipoReporte"
+                [value]="opcion"
+                [(ngModel)]="tipoSeleccionado"
+              />
+              {{ opcion }}
+            </label>
+            <button (click)="confirmarSeleccion()">Generar Reporte</button>
+          </div>
+        </div>
+  
+        <!-- Mostrar tabla del reporte -->
+        <div *ngIf="mostrarReporte" style="margin-top: 30px;">
+          <h3 style="text-align: center;">Reporte de {{ tipoSeleccionado }}</h3>
+  
+          <table
+            style="width: 100%; border-collapse: collapse; margin-top: 10px;"
+            *ngIf="datosReporte.length > 0 && columnasPorTipo[tipoSeleccionado]"
+          >
+            <thead>
+              <tr>
+                <th
+                  *ngFor="let col of columnasPorTipo[tipoSeleccionado]"
+                  style="border: 1px solid #ccc; padding: 8px; text-transform: capitalize;"
+                >
+                  {{ traducirColumna(col) }}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of datosReporte">
+                <td
+                  *ngFor="let col of columnasPorTipo[tipoSeleccionado]"
+                  style="border: 1px solid #ccc; padding: 8px;"
+                >
+                  <ng-container *ngIf="esFecha(item[col]); else textoPlano">
+                    {{ item[col] | date: 'short' }}
+                  </ng-container>
+                  <ng-template #textoPlano>{{ item[col] }}</ng-template>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+  
+          <button (click)="descargar()" style="margin-top: 15px;">Descargar PDF</button>
+        </div>
+      </div>
+    </main>
+  
+    <!-- Pie de página -->
+    <footer class="footer">
+      ClínicaApp - Sistema de Gestión de Recursos Humanos
+    </footer>
+  </div>
+  
